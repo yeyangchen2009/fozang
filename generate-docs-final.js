@@ -311,7 +311,7 @@ function generateSpecifiedPathReadmeContent(structure, basePath) {
   const totalBookCount = countMarkdownFiles(structure.path);
   
   // 修改这里：为"佛藏"名称添加超链接到根目录的README
-  content += `| [${structure.name}](../README.md) | ${totalBookCount} | ${totalWordCount} 字 | ${totalSize.formatted} |\n\n`;
+  content += `| [${structure.name}](/README.md) | ${totalBookCount} | ${totalWordCount} 字 | ${totalSize.formatted} |\n\n`;
   
   // 为每个子目录生成单独的表格
   const directories = structure.children.filter(item => item.type === 'directory');
@@ -435,7 +435,7 @@ function generateNormalReadmeContent(structure, basePath) {
     content += '## 子目录\n\n';
     
     directories.forEach(dir => {
-      content += `- [${dir.name}](${path.relative(basePath, dir.path).replace(/\\/g, '/')}/README.md)\n`;
+      content += `* [${dir.name}](${path.relative(basePath, dir.path).replace(/\\/g, '/')}/README.md)\n`;
     });
     
     content += '\n';
@@ -457,7 +457,7 @@ function generateRootSidebarContent(structure, basePath) {
   let content = '';
   
   // 根目录的readme作为首页
-  content += '* [首页](README.md)\n';
+  content += '* [首页](/README.md)\n';
   
   // 指定路径的readme
   const specifiedPathDir = structure.children.find(item => item.type === 'directory' && item.name === config.specifiedPath);
@@ -486,25 +486,29 @@ function generateRootSidebarContent(structure, basePath) {
 function generateSubdirSidebarContent(structure, basePath) {
   let content = '';
   
-  // 添加返回链接
-  content += '* [返回根目录](../README.md)\n';
-  
-  // 计算相对路径以确定正确的"返回上一级"链接
+  // 计算相对路径以确定正确的返回链接
   const relativePath = path.relative(basePath, structure.path).replace(/\\/g, '/');
   const pathParts = relativePath.split('/');
+  
+  // 添加返回根目录链接（使用相对路径格式）
+  content += '* [返回根目录](/README.md)\n';
   
   // 生成返回上一级链接（使用相对路径格式）
   if (pathParts.length <= 1) {
     // 如果只有一层深度，返回上一级就是根目录
-    content += '* [返回上一级](../README.md)\n';
+    content += '* [返回上一级](/README.md)\n';
   } else {
     // 如果有多层深度，需要返回到上一级目录
     const parentPath = pathParts.slice(0, -1).join('/');
-    content += `* [返回上一级](../${parentPath}/README.md)\n`;
+    content += `* [返回上一级](${parentPath}/README.md)\n`;
   }
   
   // 添加完整路径名称链接到该文件夹下的README（使用相对路径格式）
-  content += `* [${relativePath}](/${relativePath}/README.md)\n`;
+  if (relativePath) {
+    content += `* [${relativePath}](${relativePath}/README.md)\n`;
+  } else {
+    content += `* [${config.specifiedPath}](${config.specifiedPath}/README.md)\n`;
+  }
   
   content += '\n---\n\n';
   
@@ -512,8 +516,8 @@ function generateSubdirSidebarContent(structure, basePath) {
   const files = structure.children.filter(item => item.type === 'file');
   if (files.length > 0) {
     files.forEach(item => {
-      const relativePath = path.relative(basePath, item.path).replace(/\\/g, '/');
-      content += `* [${item.name}](${relativePath})\n`;
+      const relativeFilePath = path.relative(basePath, item.path).replace(/\\/g, '/');
+      content += `* [${item.name}](${relativeFilePath})\n`;
     });
     
     content += '\n';
@@ -523,8 +527,8 @@ function generateSubdirSidebarContent(structure, basePath) {
   const directories = structure.children.filter(item => item.type === 'directory');
   if (directories.length > 0) {
     directories.forEach(dir => {
-      const relativePath = path.relative(basePath, dir.path).replace(/\\/g, '/');
-      content += `* [${dir.name}](${relativePath}/README.md)\n`;
+      const relativeDirPath = path.relative(basePath, dir.path).replace(/\\/g, '/');
+      content += `* [${dir.name}](${relativeDirPath}/README.md)\n`;
     });
   }
   
