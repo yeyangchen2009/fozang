@@ -1,6 +1,6 @@
-* [返回根目录](../README.md)
-* [返回上一级](../README.md)
-* [js](/js/README.md)
+* [返回根目录](/README.md)
+* [返回上一级](/README.md)
+* [js](js/README.md)
 
 ---
 

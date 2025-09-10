@@ -1,4 +1,4 @@
-* [首页](README.md)
+* [首页](/README.md)
 * [佛藏](佛藏/README.md)
 
 ---

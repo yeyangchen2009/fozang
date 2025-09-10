@@ -9,18 +9,19 @@
   - [藏外](/佛藏/藏外/)
 
 - 工具
-  - [💾 下载离线版](https://github.com/yeyangchen2009)
+  - [💾 下载离线版](https://github.com/yeyangchen2009/fozang)
   - [📖 使用指南](guide.md)
   - [📞 GitHub](https://github.com/yeyangchen2009)
 
 - **十藏**
-  - [佛藏](https://yeyangchen2009.github.io/DaZangJing)
-  - [道藏](https://github.com/yeyangchen2009)
-  - [易藏](https://github.com/yeyangchen2009)
-  - [医藏](https://github.com/yeyangchen2009)
-  - [儒藏](https://github.com/yeyangchen2009)
-  - [史藏](https://github.com/yeyangchen2009)
-  - [子藏](https://github.com/yeyangchen2009)
-  - [集藏](https://github.com/yeyangchen2009)
-  - [诗藏](https://github.com/yeyangchen2009)
-  - [艺藏](https://github.com/yeyangchen2009)
+  - [佛藏](https://yeyangchen2009.github.io/fozang)
+  - [道藏](https://yeyangchen2009.github.io/daozang)
+  - [易藏](https://yeyangchen2009.github.io/yizang)
+  - [医藏](https://yeyangchen2009.github.io/Yizang)
+  - [儒藏](https://yeyangchen2009.github.io/ruzang)
+  - [史藏](https://yeyangchen2009.github.io/shizang)
+  - [子藏](https://yeyangchen2009.github.io/zizang)
+  - [集藏](https://yeyangchen2009.github.io/jizang)
+  - [诗藏](https://yeyangchen2009.github.io/Shizang)
+  - [艺藏](https://yeyangchen2009.github.io/YiZang)
+  
